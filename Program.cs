@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Server.Kestrel;
 
 namespace satchel
 {
@@ -20,6 +21,10 @@ namespace satchel
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+		.UseKestrel(opts =>
+		{
+			opts.Listen(IPAddress.Loopback,5000);
+		})
                 .Build();
     }
 }
