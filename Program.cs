@@ -24,7 +24,7 @@ namespace satchel
                 .UseStartup<Startup>()
 		        .UseKestrel(opts =>
 		        {
-			        opts.Listen(IPAddress.Loopback,5000);
+			        opts.Listen(IPAddress.Parse("0.0.0.0"),5000);
 		        })
                 .Build();
     }
