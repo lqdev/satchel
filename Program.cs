@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,10 +22,10 @@ namespace satchel
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-		.UseKestrel(opts =>
-		{
-			opts.Listen(IPAddress.Loopback,5000);
-		})
+		        .UseKestrel(opts =>
+		        {
+			        opts.Listen(IPAddress.Loopback,5000);
+		        })
                 .Build();
     }
 }
